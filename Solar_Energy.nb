@@ -1,0 +1,151 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4941,        141]
+NotebookOptionsPosition[      4684,        127]
+NotebookOutlinePosition[      5041,        143]
+CellTagsIndexPosition[      4998,        140]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_electron_0.\
+8MeV.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"data2", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_electron_2MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{"data", ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"56380", ",", "56483.0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "250000"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"B", " ", "=", " ", 
+    RowBox[{"ListLogPlot", "[", 
+     RowBox[{"data2", ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"56380", ",", "56569.0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "20000"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"A", ",", "B"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_1MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata2", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_50MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata3", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_10MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata4", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_30MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata5", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_50MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"protondata6", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</Users/spenceraxani/Desktop/499/data/datapack/GP_5m_proton_100MeV.\
+txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"proton1", " ", "=", " ", 
+    RowBox[{"ListLogPlot", "[", 
+     RowBox[{"protondata", ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"56464", ",", "56469.0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1200"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"proton5", "=", " ", 
+    RowBox[{"ListLogPlot", "[", 
+     RowBox[{"protondata2", ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"56464", ",", "56469.0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "100"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"proton1", ",", "proton5"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.584809863422477*^9, 3.58480986387323*^9}}]
+},
+WindowSize->{740, 691},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 4123, 105, 658, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
