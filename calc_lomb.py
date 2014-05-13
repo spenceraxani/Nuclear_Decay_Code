@@ -18,8 +18,12 @@ from decimal import *
 from random import gauss
 from scipy.fftpack import fft, rfft, fftfreq
 import pylab as plt
+###########################################
+#So, this will first manually calculates a Lomb Scargle periodogram for the first graph, and then
+###########################################
 
-def exp_counts(t):
+
+def exp_counts(t): #this just calculates the expected count rate given the values of the best fit
 	half_life = 1926.14 	#days	
 	initial_counts = 1027.57125
 	counts_exp = (initial_counts)*numpy.exp(-numpy.log(2)*(t-56546.9071712)/half_life)
@@ -27,7 +31,7 @@ def exp_counts(t):
 
 print(exp_counts(56547.9071712))
 
-time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/data_detrended.txt', unpack=True)
+time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True) #Calc Lomb Scargle from this file, and give confidence intervals
 time_series = array("d",time)
 mean = np.mean(counts)
 time_list = []
@@ -170,7 +174,7 @@ x = np.array(time_list, np.float64)
 measurement = array("d",counts)
 y = np.array(measurement, np.float64)
 '''
-time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/binned_total_counts.txt', unpack=True)
+time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_total_counts.txt', unpack=True) #use this file to calculate the second lombs scargle
 time_series = array("d",time)
 mean = np.mean(counts)
 time_list = []

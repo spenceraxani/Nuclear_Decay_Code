@@ -10,77 +10,103 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     19838,        391]
-NotebookOptionsPosition[     19464,        373]
-NotebookOutlinePosition[     19823,        389]
-CellTagsIndexPosition[     19780,        386]
+NotebookDataLength[     21201,        417]
+NotebookOptionsPosition[     20829,        399]
+NotebookOutlinePosition[     21185,        415]
+CellTagsIndexPosition[     21142,        412]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{"a", " ", "=", " ", 
-   RowBox[{"1.74249", " ", 
-    SuperscriptBox["10", "3"]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"b", " ", "=", 
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"-", "5.19352"}], " ", "*", 
-    SuperscriptBox["10", 
-     RowBox[{"-", "5"}]]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"c", " ", "=", 
-   RowBox[{"2.28624", " ", 
-    SuperscriptBox["10", 
-     RowBox[{"-", "2"}]]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"corr", " ", "=", "0.04327173289933918"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"Plot", "[", 
-  RowBox[{
-   RowBox[{"a", " ", 
-    SuperscriptBox["\[ExponentialE]", 
-     RowBox[{"(", 
-      RowBox[{"-", 
-       FractionBox[
-        SuperscriptBox[
-         RowBox[{"(", 
-          RowBox[{"x", "-", "b"}], ")"}], "2"], 
-        RowBox[{"2", 
-         SuperscriptBox["c", "2"]}]]}], ")"}]]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", 
-     RowBox[{"-", "0.1"}], ",", "01"}], "}"}], ",", 
-   RowBox[{"PlotRange", "\[Rule]", 
-    RowBox[{"{", 
+    RowBox[{
+    "So", " ", "this", " ", "was", " ", "used", " ", "to", " ", "calculate", 
+     " ", "the", " ", "bootstrapping", " ", "confidence", " ", 
+     RowBox[{"intervals", ".", " ", "Bassically"}]}], ",", " ", 
+    RowBox[{
+    "after", " ", "generating", " ", "all", " ", "the", " ", "sample", " ", 
+     "data", " ", "sets", " ", "using", " ", "the", " ", "bootstrap", " ", 
+     "method", " ", "and", " ", "then", " ", "fitting", " ", "it", " ", 
+     "with", " ", "a", " ", "gaussian"}], ",", " ", 
+    RowBox[{
      RowBox[{
+     "take", " ", "thoes", " ", "fit", " ", "data", " ", "and", " ", "put", 
+      " ", "them", " ", "in", " ", 
+      RowBox[{"here", ".", "  ", "Integrate"}], " ", "the", " ", "normalized",
+       " ", "gaussian", " ", "from", " ", "the", " ", "pearsons", " ", 
+      "correlation", " ", "coeeficient", " ", "to", " ", "inf", " ", "to", 
+      " ", "get", " ", "one"}], "-", 
+     RowBox[{"tailed", " ", "p"}], "-", 
+     RowBox[{
+      RowBox[{"value", ".", " ", "2"}], " ", "times", " ", "this", " ", "for",
+       " ", "two", " ", "tailed"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", " ", "=", " ", 
+     RowBox[{"1.74249", " ", 
+      SuperscriptBox["10", "3"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", " ", "=", 
+     RowBox[{
+      RowBox[{"-", "5.19352"}], " ", "*", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "5"}]]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c", " ", "=", 
+     RowBox[{"2.28624", " ", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "2"}]]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"corr", " ", "=", "0.04327173289933918"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"a", " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"(", 
+        RowBox[{"-", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "b"}], ")"}], "2"], 
+          RowBox[{"2", 
+           SuperscriptBox["c", "2"]}]]}], ")"}]]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "0.1"}], ",", "01"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
       RowBox[{"{", 
        RowBox[{
-        RowBox[{"-", ".1"}], ",", ".1"}], "}"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"0", ",", "2000"}], "}"}]}], "}"}]}]}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{"2", "*", 
-  RowBox[{
-   SubsuperscriptBox["\[Integral]", "corr", "\[Infinity]"], 
-   RowBox[{
-    FractionBox["1", 
-     RowBox[{"c", 
-      SqrtBox[
-       RowBox[{"2", " ", "\[Pi]"}]]}]], " ", 
-    SuperscriptBox["\[ExponentialE]", 
-     RowBox[{"(", 
-      RowBox[{"-", 
-       FractionBox[
-        SuperscriptBox[
-         RowBox[{"(", 
-          RowBox[{"x", "-", "b"}], ")"}], "2"], 
-        RowBox[{"2", 
-         SuperscriptBox["c", "2"]}]]}], ")"}]], 
-    RowBox[{"\[DifferentialD]", "x"}]}]}]}]}], "Input",
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", ".1"}], ",", ".1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "2000"}], "}"}]}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"2", "*", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "corr", "\[Infinity]"], 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"c", 
+        SqrtBox[
+         RowBox[{"2", " ", "\[Pi]"}]]}]], " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"(", 
+        RowBox[{"-", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "b"}], ")"}], "2"], 
+          RowBox[{"2", 
+           SuperscriptBox["c", "2"]}]]}], ")"}]], 
+      RowBox[{"\[DifferentialD]", "x"}]}]}]}]}]}]], "Input",
  CellChangeTimes->{{3.6087289869864893`*^9, 3.608729038069882*^9}, {
   3.6087290770731173`*^9, 3.608729194198555*^9}, {3.608729236363925*^9, 
   3.608729279347644*^9}, {3.6087320442260847`*^9, 3.60873207444981*^9}, {
@@ -91,7 +117,7 @@ Cell[BoxData[{
   3.6087451923981047`*^9, 3.6087452216899233`*^9}, {3.6087480055336447`*^9, 
   3.608748025614085*^9}, {3.6087506274911623`*^9, 3.608750653197401*^9}, {
   3.6087567038086557`*^9, 3.6087567411161337`*^9}, {3.6088123186436768`*^9, 
-  3.608812343945045*^9}}],
+  3.608812343945045*^9}, {3.608978985687642*^9, 3.608979139050906*^9}}],
 
 Cell[BoxData[
  GraphicsBox[{{}, {}, 
@@ -372,7 +398,7 @@ Cell[BoxData["0.058095762149048255`"], "Output",
 }, Open  ]]
 },
 WindowSize->{740, 699},
-WindowMargins->{{Automatic, 173}, {-20, Automatic}},
+WindowMargins->{{21, Automatic}, {Automatic, 8}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",
 StyleDefinitions->"Default.nb"
@@ -389,9 +415,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 2553, 71, 186, "Input"],
-Cell[3135, 95, 15789, 265, 277, "Output"],
-Cell[18927, 362, 521, 8, 28, "Output"]
+Cell[579, 22, 3918, 97, 322, "Input"],
+Cell[4500, 121, 15789, 265, 243, "Output"],
+Cell[20292, 388, 521, 8, 28, "Output"]
 }, Open  ]]
 }
 ]

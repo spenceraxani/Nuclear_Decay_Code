@@ -21,6 +21,10 @@ from scipy.stats import *
 from scipy.stats.stats import pearsonr
 import random
 
+#################
+#Simple graph for background
+#################
+
 c = TCanvas('canvas','can',600,600)
 c.Draw()
 c.cd()
@@ -28,19 +32,8 @@ p = TPad('p','pad',0.0,0.0,1,1)
 p.SetGrid()
 p.Draw()
 
-#file_name = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/BACKGROUND_JULY_29_2013.Spe'
-file_name = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/data/2013_Aug_17_L2-008_germanium/Co60_1__800LIVE_000002.Spe'
-'''
-hist = TH1F('Histogram','hist',16383,0,max_amp)
-line_number = 0
-for line in open(file_name):
-	cols = line.replace(" ", "")
-	line_number += 1
-	if line_number>12:
-
-	print(line_number)
-	print(cols)
-'''
+file_name = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/BACKGROUND_JULY_29_2013.Spe'
+#file_name = '/Users/spenceraxani/Documents/Nuclear_Decay/data/datapack/data/2013_Aug_17_L2-008_germanium/Co60_1__800LIVE_000002.Spe'
 h1 = TH1F('Background','BACKGROUND_JULY_29_2013',16383,0,16383)
 h1.SetTitle("L2-008 Germanium Detector ^{60}CO Spectrum;Energy [keV]; Count Rate [cps]")
 h1.Draw("C")
@@ -55,16 +48,4 @@ c.Modified()
 c.Update()
 print(h1.Integral(12280,12400))
 
-	
 raw_input("done")
-'''
-for i in range(len(spectrum)):
-
-
-hist = TH1F('Histogram','hist',bins,0,max_amp)
-h1hist.SetTitle("Maximums;Arbitrary Units; Angular Frequency [rads/day]")
-h1hist.Draw()
-
-for i in range(len(spectrum)):
-	h1hist.Fill(spectrum[i],1)
-	'''

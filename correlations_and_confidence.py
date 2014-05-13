@@ -21,6 +21,10 @@ from scipy.stats import *
 from scipy.stats.stats import pearsonr
 import random
 
+##############################
+#Input data sets that are of the same time series (all those that have been binned, found in the binned folder)
+###############################
+
 def correlation(x,y):
 	#input two sets of arrays. like x = array("d",counts) and y = array("d",electron_energy)	
 	sum_diff_x_square = 0
@@ -37,7 +41,7 @@ def correlation(x,y):
 
 dictionary = {}
 counter = 0
-for file in glob.glob('/Users/spenceraxani/Documents/499_Thesis/data/datapack/binned/*.txt'):
+for file in glob.glob('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/*.txt'): #these files are the binned files to calculate the Pearsons correlations using my calc and the Scipy pearsonsr calc
 	print(file)
 	fh = open(file)
 	lines = fh.readlines()
@@ -52,6 +56,7 @@ for file in glob.glob('/Users/spenceraxani/Documents/499_Thesis/data/datapack/bi
 			if columns[0] in dictionary: #
 				dictionary[columns[0]].append(columns[1]) #so now the dictionary is dictionary[date]=[counts,deadtime,electron,...]
 #Now calculate the correlation or whatever from the elements in the dictionary.
+print("Calculating Pearsons Correlations ...")
 new_dict = {}
 number_of_variables = 15 #basically number of files in the folder
 for element in dictionary: #This loop gets rid of missing data from any of the data sets, and only uses the dates at which there is data for every variable.
@@ -69,15 +74,15 @@ for j in range(number_of_variables): #Now loop through all entries to calculate 
 		#print(list1)
 		x = array("d",list1)
 		y = array("d",list2)	
-		#print(correlation(x,y))
-		#print(pearsonr(x, y))#Check with scipy version of pearsons correlation.
+		print(correlation(x,y))
+		print(pearsonr(x, y))#Check with scipy version of pearsons correlation.
 		#print(probabilityOfResult(x,y)[0])
 
 #now bootstrap that mother!
-trials = 50000 #number of random sets of data to generate.
+trials = 50000 #number of bootstraping data sets to generate.
 #pick the file to bootstrap.
-file1 = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/binned/binned_counts.txt' #comparing file
-file2 = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/binned/binned_xray_short.txt' #this one, bootstrap
+file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_counts.txt' #comparing file
+file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_xray_short.txt' #this one, bootstrap
 date1, value1 = numpy.loadtxt(file1, unpack=True)
 date2, value2 = numpy.loadtxt(file2, unpack=True)
 
@@ -87,7 +92,7 @@ new_temp_dict = {}
 temp_values_dict = {}
 another_dict = {}
 temp_another_dict = {}
-
+print("Calculating the bootstrapping distribution ...")
 for i in range(trials):
 	for i in range(len(date1)):
 		new_temp_dict[date1[i]] = [value1[i]] #here, column[0] is the date. So element [date] in dictionary is [value(column[1])]
@@ -151,7 +156,7 @@ for i in range(len(p_corr_list)):
 	gr_2.Fill(p_corr_list[i])
 gr_2.Draw()
 
-gr_2.Fit("gaus",'','', -maximum, maximum)
+gr_2.Fit("gaus",'','', -maximum, maximum) # this gaussian can then be integrated to get the two tailed p-values. Input these values into correlation_gaussian.np code to integrate.
 
 p1 = TLine(corr,0,corr,1000)
 p1.SetLineStyle(2)
