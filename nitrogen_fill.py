@@ -21,10 +21,10 @@ import time
 getcontext().prec = 12
 
 try:
-	os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/nitrogen_data.txt')
+	os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/nitrogen_data.txt')
 except OSError:
 	pass
-temp = open('/Users/spenceraxani/Documents/499_Thesis/data/datapack/nitrogen.txt', 'r')
+temp = open('/Users/spenceraxani/Documents/Nuclear_Decay/Data/nitrogen.txt', 'r')
 counter1 = 0
 for line in temp:
 	counter1 += 1;
@@ -57,10 +57,10 @@ for line in temp:
 		a =time.gmtime(current_time) 
 		proper_time= float(time.gmtime(current_time)[7]) + float(actual_time)
 		if year == 2013:
-			temp_out = open('/Users/spenceraxani/Documents/499_Thesis/data/datapack/nitrogen_data.txt', 'a')
+			temp_out = open('/Users/spenceraxani/Documents/Nuclear_Decay/Data/nitrogen_data.txt', 'a')
 			temp_out.write(str(56293.50 + proper_time) + "\t" + str(1.0007) + "\n")
 		if year == 2014:
-			temp_out = open('/Users/spenceraxani/Documents/499_Thesis/data/datapack/nitrogen_data.txt', 'a')
+			temp_out = open('/Users/spenceraxani/Documents/Nuclear_Decay/Data/nitrogen_data.txt', 'a')
 			temp_out.write(str(56293.50 + 365+ proper_time) + "\t" + str(1.0007) + "\n")
 
 raw_input("done")

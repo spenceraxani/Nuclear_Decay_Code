@@ -20,7 +20,9 @@ import pylab as plt
 import time
 getcontext().prec = 12
 
-
+########################################
+#This was just a quick piece of code to calculate the change in efficiency with repect to a change in distance of the HPGe, 
+########################################
 cproton = TCanvas('cproton', 'Proton',600,900)
 cproton.Draw()
 cproton.cd()
@@ -29,7 +31,7 @@ Proton_pad2.SetGrid()
 Proton_pad2.Draw()
 Proton_pad2.cd()
 
-position, net = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/efficiency.txt', unpack=True)
+position, net = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/efficiency.txt', unpack=True) #were the data is found.
 eff_117 = []
 eff_117_error = []
 eff_133 = []

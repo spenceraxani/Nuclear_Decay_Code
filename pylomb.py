@@ -36,7 +36,7 @@ p3lomb = TPad('p3lomb','p3',0.55,0.05,0.95,.5)
 p3lomb.Draw()
 p1lomb.cd()
 
-time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 time_list = []
 sample_x = []
 mean = np.mean(counts)

@@ -17,7 +17,9 @@ from decimal import *
 from random import gauss
 from scipy.fftpack import fft, rfft, fftfreq
 import pylab as plt
-
+##############################################
+##
+##############################################
 def drange(start, stop, step):
 	r = start
 	while r < stop:
@@ -33,14 +35,14 @@ p1lomb.Draw()
 p2lomb = TPad('p1lomb','pl',0.05,0.5,0.95,.98)
 p2lomb.Draw()
 p1lomb.cd()
-lomb_fileout ='/Users/spenceraxani/Documents/499_Thesis/data/datapack/lomb_fileout_test.txt'
+lomb_fileout ='/Users/spenceraxani/Documents/Nuclear_Decay/Data/lomb_fileout_test.txt'
 
 if LOMB == True:
 	try:
 		os.remove(lomb_fileout)
 	except OSError:
 		pass
-	time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/away_from_mean.txt', unpack=True)
+	time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_from_mean.txt', unpack=True)
 	time_series = array("d",time)
 	mean = np.mean(counts)
 	time_list = []
@@ -142,8 +144,8 @@ p5.SetLineStyle(2);
 p5.SetLineColor(45)
 p5.SetLineWidth(3)
 
-freq, amp  = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/lomb_fileout_test.txt', unpack=True)
-time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/away_from_mean.txt', unpack=True)
+freq, amp  = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/lomb_fileout_test.txt', unpack=True)
+time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_from_mean.txt', unpack=True)
 x1 = array("d",freq)
 y1 = array("d",amp)
 

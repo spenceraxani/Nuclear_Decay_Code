@@ -18,16 +18,21 @@ from random import gauss
 from scipy.fftpack import fft, rfft, fftfreq
 import pylab as plt
 
+#####################################
+
+
+
+
 MC = 0
 ang_freq = 200
 trials = 10000
-MC_fileout = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/MC_data.txt'
+MC_fileout = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/MC_data.txt'
 if MC == True:
 	try:
 	    os.remove(MC_fileout)	
 	except OSError:
 		pass
-	time , counts,errs = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+	time , counts,errs = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 	time_list = []
 	sample_x = []
 	mean = np.mean(counts)
@@ -91,7 +96,7 @@ h1 = TH1F('Maximums','scargy',bins,0,max_amp)
 h1.SetTitle(";Maximum Periodogram Amplitude Detected; Counts")
 h1.SetLineColor(1)
 h1.Draw()
-spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/MC_total.txt', unpack=True)
+spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/MC_total.txt', unpack=True)
 obs_max = np.amax(spectrum)
 h1.SetStats(False)
 for i in range(len(spectrum)):
@@ -153,7 +158,7 @@ pscar1.Update()
 pscar2.cd()
 #time , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime, fwhm, counts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/real_data.txt', unpack=True)
 
-time , counts, errs = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+time , counts, errs = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 time_list = []
 sample_x = []
 mean = np.mean(counts)

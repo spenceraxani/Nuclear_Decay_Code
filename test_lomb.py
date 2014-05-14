@@ -31,7 +31,7 @@ pscar2.cd()
 first_day = 56506.8942593
 last_day = 56673.0953472
 
-time , counts, errs = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+time , counts, errs = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 time_list = []
 sample_x = []
 mean = np.mean(counts)

@@ -20,6 +20,12 @@ import pylab as plt
 import time
 getcontext().prec = 12
 
+##########################################################
+# This is just a mess of code to generate a tonne of graphs.  It also takes all the solar data and count rate data to make it usefull.  You'll spend most of your time in this file. 
+###########################################################
+
+
+
 SOLAR_DATA = 0
 TEMP_DATA = 0
 SYNC = 1
@@ -154,18 +160,18 @@ away_from_mean_fileout = "away_from_mean.txt"
 away_error_fileout = "away_error_fileout.txt"
 lomb_fileout = "lomb_fileout.txt"
 try:
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + away_error_fileout)	
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + away_from_mean_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + deadtimefileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + chi_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + expected_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + toy_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + chi_fileout_toy)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + likelihood_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + peak_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + FWHM_fileout)
-    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + peak_counts_correlation)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + away_error_fileout)	
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + away_from_mean_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + deadtimefileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + chi_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + expected_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + toy_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + chi_fileout_toy)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + likelihood_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + peak_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + FWHM_fileout)
+    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + peak_counts_correlation)
 except OSError:
 	pass
 
@@ -195,30 +201,30 @@ chi_fileout_toy = "toy_chi_squared_data.txt"
 likelihood_fileout = "likelihood_data.txt"
 peak_fileout = "peak_data.txt"
 FWHM_fileout = "FWHM_data.txt"
-sample_fileout = "CO60_800LIVE_000001.Spe"
+sample_fileout = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/CO60_800LIVE_000001.Spe"
 flat_fileout = "flat_data.txt"
-real_fileout = "real_data.txt"
+#real_fileout = "ave_out_file"
 pressure_fileout = "pressure_data.txt"
 leastsquares_fileout = "leastsquares.txt"
-temperature_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/Temperature.txt"
-temperature_out_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/detector_temperature.txt"
-humidity_out_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/detector_humitidy.txt"
-x_out_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/x.txt"
-y_out_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/y.txt"
+temperature_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/Temperature.txt"
+temperature_out_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/detector_temperature.txt"
+humidity_out_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/detector_humitidy.txt"
+x_out_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/x.txt"
+y_out_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/y.txt"
 
 if REAL == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + real_fileout)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + deadtimefileout)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + peak_fileout)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + FWHM_fileout)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + peak_counts_correlation)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + real_fileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + deadtimefileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + peak_fileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + FWHM_fileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + peak_counts_correlation)
 		os.remove(x_out_file)
 		os.remove(y_out_file)
 	except OSError:
 		pass
 	
-	for file in glob.glob('/Users/spenceraxani/Documents/499_Thesis/data/datapack/data/2013_Aug_17_L2-008_germanium/*.Spe'):
+	for file in glob.glob('/Users/spenceraxani/Documents/Nuclear_Decay/Data//data/2013_Aug_17_L2-008_germanium/*.Spe'):
 		h1 = TH1F('^{60}CO Spectrum','^{60}CO Spectrum',16384,0,16384)
 		h1.Draw()
 		fh = open(file)
@@ -324,7 +330,7 @@ if REAL == True:
 	 	peak_output.write(str(proper_time) + "\t" + str(peaks[0]) + '\t' + str(peaks[1]) +"\n")
 	 	fh.close()	 	
 
-juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+real_fileout, unpack=True)
+juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+real_fileout, unpack=True)
 
 first_day = 0
 last_day = 0
@@ -360,7 +366,7 @@ p11.cd()
 ##########################################################################################
 ### Distance to sun
 ##########################################################################################	
-sun_file = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/solar_distance.txt"
+sun_file = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/solar_distance.txt"
 
 if SUN_DISTANCE == True:
 	try:
@@ -372,7 +378,7 @@ if SUN_DISTANCE == True:
 	for i in range(len(date)):
 		sunfile = open(sun_file,'a')
 	 	sunfile.write(str(date[i]) + "\t" + str((solar_distance(date[i]) - 147166462000.0)*(first_count - last_count)/10000506000.0+980) + "\n" )
-date_2 , height = numpy.loadtxt("/Users/spenceraxani/Documents/499_Thesis/data/datapack/solar_distance.txt", unpack=True)
+date_2 , height = numpy.loadtxt("/Users/spenceraxani/Documents/Nuclear_Decay/Data/solar_distance.txt", unpack=True)
 date2 = array("d",date_2)
 height2 = array("d",height)
 
@@ -426,7 +432,7 @@ solar_dis.Draw("ELsame")
 
 #exp_gr.Draw("Elsame")
 p12.cd()
-juldate , peak1 , peak2 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+ peak_fileout, unpack=True)
+juldate , peak1 , peak2 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+ peak_fileout, unpack=True)
 x = array("d",juldate)
 y = array("d",peak1)
 z = array("d",peak2)
@@ -461,7 +467,7 @@ p21.Update()
 
 print("Calculating Deadtime ...")
 p22.cd()
-juldate , deadtime = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+ deadtimefileout, unpack=True)
+juldate , deadtime = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+ deadtimefileout, unpack=True)
 x = array("d",juldate)
 y = array("d",deadtime)
 deadtime_graph = TGraph(len(x), x, y)
@@ -471,12 +477,12 @@ deadtime_graph.SetTitle("Deadtime")
 deadtime_graph.GetXaxis().SetLimits(first_day,last_day);
 deadtime_graph.Draw("AP")
 p22.Update()
-raw_input("done")
+
 ######################################
 error_for2 = "error_for.txt"
 if LINE == True:
     try:
-        os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + error_for2)	
+        os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + error_for2)	
     except OSError:
     	pass
     for u in range(10000):
@@ -499,7 +505,7 @@ p1base.SetGrid()
 p1base.Draw()
 p1base.cd()
 
-juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+real_fileout, unpack=True)
+juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+real_fileout, unpack=True)
 
 x = array("d",juliandate)
 y1 = array("d",fwhm)
@@ -653,17 +659,17 @@ h12.Update()
 ##########################################################################################
 ### Temperature of cap at every data point
 ##########################################################################################
-modifieddata = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/modified_with_temp'
+modifieddata = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/modified_with_temp'
 if MODTEMP == True:
 	try:
 	    os.remove(modifieddata)
 	except OSError:
 	    pass
-	the_time, the_temp = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/detector_temperature.txt', unpack=True)
+	the_time, the_temp = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/detector_temperature.txt', unpack=True)
 	time = array("d",the_time)
 	temp = array("d",the_temp)
 
-	the_julian, non, err11, errs, ewrwer,  coustsps, err_countsps, exp_countsps, total_counts_seen, live_times = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/real_data.txt', unpack=True)
+	the_julian, non, err11, errs, ewrwer,  coustsps, err_countsps, exp_countsps, total_counts_seen, live_times = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/real_data.txt', unpack=True)
 	time_counts = array("d",the_julian)
 	counts_ps =  array("d",coustsps)
 	err_counts_ps = array("d",err_countsps)
@@ -725,11 +731,11 @@ p2ave = TPad('p2ave2','p',0.0,0.0,1,0.5)
 p2ave.SetGrid()
 p2ave.Draw()
 p1ave.cd()
-juliandate , c117 , zeros, c133, er133, net, ernet, exp , realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+real_fileout, unpack=True)
+juliandate , c117 , zeros, c133, er133, net, ernet, exp , realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+real_fileout, unpack=True)
 ave_out_file = 'ave_detector_counts.txt'
 if AVE == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + ave_out_file)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + ave_out_file)
 	except OSError:
 		pass
 	num_files = 0
@@ -758,15 +764,16 @@ if AVE == True:
 			ave_date = 0
 			list_net = []
 			list_date = []			
-juliandate , counts, error = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/ave_detector_counts.txt', unpack=True)
+juliandate , counts, error = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/ave_detector_counts.txt', unpack=True)
+
 for k in range(len(juliandate)):
 	diff = 1 - (fit_counts(B,A,juliandate[k]) - counts[k])/fit_counts(B,A,juliandate[k])
 	errdifftop = 1 + error[k]/fit_counts(B,A,juliandate[k])
 	errdiffbottom = 1 - error[k]/fit_counts(B,A,juliandate[k])
-	away_fileout = open(away_from_mean_fileout,'a')
+	away_fileout = open('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_from_mean.txt','a')
 	away_fileout.write(str(juliandate[k]) + "\t" + str(diff)+"\t" + str(1-errdiffbottom)+ "\n" )
 for k in range(10000):
-	away_error = open(away_error_fileout,'a')
+	away_error = open('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_error_fileout.txt','a')
 	away_error.write(str(first_day+0.1*k) + "\t" +str(1)+ "\t" + str(0) +"\t" + str(math.fabs(1-errdiffbottom))  +"\t" +"\t" +  str(math.fabs(2*(1-errdiffbottom)))+"\n" )
 plot_ave = TGraph()
 plot_ave.SetLineColor(2)
@@ -784,13 +791,13 @@ plot_ave.GetYaxis().SetTitleOffset(1.6);
 p1ave.Update()
 
 p2ave.cd()
-juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/away_from_mean.txt', unpack=True)
+juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_from_mean.txt', unpack=True)
 x = array("d",juliandate)
 y = array("d",away)
 plot_away = TGraph(len(x), x, y)
 plot_away.SetMarkerStyle(7)
 
-inc , one, errorx, errory , doubleerror = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/away_error_fileout.txt', unpack=True)
+inc , one, errorx, errory , doubleerror = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_error_fileout.txt', unpack=True)
 j = array("d",inc)
 r = array("d",one)
 q = array("d",errorx)
@@ -817,18 +824,18 @@ mg_away.GetXaxis().SetLimits(first_day,last_day);
 
 p2ave.Modified();
 p2ave.Update()
-raw_input("done")
+
 ##########################################################################################
 ### Histogram dates and such
 ##########################################################################################	
 print('Calculating Daily Histogram...')
-juliandate , c117 , zeros, c133, er133, net, ernet, exp , realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+real_fileout, unpack=True)
+juliandate , c117 , zeros, c133, er133, net, ernet, exp , realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+real_fileout, unpack=True)
 hist_file = 'hist_fileout.txt'
 
 
 if HIST == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + hist_file)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + hist_file)
 	except OSError:
 		pass
 	num_files = 0
@@ -860,10 +867,10 @@ if HIST == True:
 mean_hist_fileout = "hist_mean_fileout.txt"
 if MEAN:
 	try:
-	    os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + mean_hist_fileout)
+	    os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + mean_hist_fileout)
 	except OSError:
 		pass
-	juliandate, counts, error = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_fileout.txt', unpack=True)
+	juliandate, counts, error = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_fileout.txt', unpack=True)
 	for k in range(len(juliandate)):
 		diff = 1 - (fit_counts(B,A,juliandate[k]) - counts[k])/fit_counts(B,A,juliandate[k])
 		errdifftop = 1 + error[k]/fit_counts(B,A,juliandate[k])
@@ -882,7 +889,7 @@ p2hist.SetGrid()
 p2hist.Draw()
 p1hist.cd()
 
-juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 x = array("d",juliandate)
 y = array("d",away)
 plot_hist_away = TGraph(len(x), x, y)
@@ -897,11 +904,11 @@ plot_hist_away.GetXaxis().SetLimits(first_day,last_day)
 p1hist.Modified();
 p1hist.Update()
 
-juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_fileout.txt', unpack=True)
+juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_fileout.txt', unpack=True)
 x = array("d",juliandate)
 y = array("d",away)
 
-histogram = "/Users/spenceraxani/Documents/499_Thesis/data/datapack/daily_counts.txt"
+histogram = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/daily_counts.txt"
 try:
 	os.remove(histogram)
 except OSError:
@@ -971,7 +978,7 @@ if LOMB == True:
 		os.remove(lomb_fileout)
 	except OSError:
 		pass
-	time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/data_detrended.txt', unpack=True)
+	time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True)
 	time_series = array("d",time)
 	mean = np.mean(counts)
 	time_list = []
@@ -1068,25 +1075,7 @@ p5 = TLine(0,z5,2,z5);
 p5.SetLineStyle(2);
 p5.SetLineColor(45)
 p5.SetLineWidth(3)
-'''
-TMarker *null_point1 = new TMarker();
-null_point1->SetMarkerStyle(1);
-null_point1->SetMarkerSize(3);
-null_point1->SetMarkerStyle(5);
-TMarker *null_point2 = new TMarker();
-null_point2->SetMarkerStyle(1);
-null_point2->SetMarkerSize(3);
-null_point2->SetMarkerStyle(5);
-TMarker *null_point3 = new TMarker();
-null_point3->SetMarkerStyle(1);
-null_point3->SetMarkerSize(3);
-null_point3->SetMarkerStyle(5);
 
-
-null_point1->DrawMarker(0.42,2.32);
-null_point2->DrawMarker(0.5,2.32);
-null_point3->DrawMarker(0.580,2.32);
-'''
 oneweek = TLine(2*math.pi/7,0,2.0*math.pi/7,40);
 oneweek.SetLineStyle(2);
 oneweek.SetLineColor(1)
@@ -1102,7 +1091,7 @@ oneyear.SetLineStyle(2);
 oneyear.SetLineColor(1)
 oneyear.SetLineWidth(3)
 
-freq, amp  = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/lomb_fileout.txt', unpack=True)
+freq, amp  = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/lomb_fileout.txt', unpack=True)
 x1 = array("d",freq)
 y1 = array("d",amp)
 
@@ -1139,13 +1128,13 @@ p1lomb.Update()
 ##########################################################################################	
 ang_freq = 200
 trials = 10
-MC_fileout = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/MC_data.txt'
+MC_fileout = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/MC_data.txt'
 if MC == True:
 	try:
 	    os.remove(MC_fileout)	
 	except OSError:
 		pass
-	time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
+	time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/hist_mean_fileout.txt', unpack=True)
 	time_list = []
 	sample_x = []
 	mean = np.mean(counts)
@@ -1207,7 +1196,7 @@ pscar1.SetLogy()
 h1hist = TH1F('Maximums','scargy',bins,0,max_amp)
 h1hist.SetTitle("Maximums;Arbitrary Units; Angular Frequency [rads/day]")
 h1hist.Draw()
-spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/MC_data.txt', unpack=True)
+spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/MC_data.txt', unpack=True)
 for i in range(len(spectrum)):
 	h1hist.Fill(spectrum[i],1)
 print("The maximum peak out of the " +str(trials)+" trials was " +str(np.amax(spectrum)))
@@ -1253,7 +1242,7 @@ pscar1.Update()
 pscar2.cd()
 
 #time , counts, errs= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/hist_mean_fileout.txt', unpack=True)
-time , counts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/binned_counts_copy.txt', unpack=True)
+time , counts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_counts_copy.txt', unpack=True)
 
 time_list = []
 sample_x = []
@@ -1337,10 +1326,10 @@ pp2.cd()
 print("Calculating Pressure ...")
 if PRESSURE == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + pressure_fileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + pressure_fileout)
 	except OSError:
 		pass
-	input = '/Users/spenceraxani/Documents/499_Thesis/data/datapack/pressure.txt'
+	input = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/pressure.txt'
 	#h4 = TH1F('Pressure','Pressure',16384,0,16384)
 	#h4.Draw()
 	fh = open(input)
@@ -1391,7 +1380,7 @@ if PRESSURE == True:
 			pressureoutput = open(pressure_fileout,'a')
 		 	pressureoutput.write(str(proper_time) + "\t" + str(pressure) + "\n" )
 		
-x1 , y1 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + pressure_fileout, unpack=True)
+x1 , y1 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + pressure_fileout, unpack=True)
 x = array("d", x1)
 y = array("d", y1)
 pressure_gr = TGraph(len(x), x, y)
@@ -1449,18 +1438,18 @@ fileout7 = "GP_5m_proton_100MeV.txt"
 print("Calculating Solar Proton Data ...")
 if SOLAR_DATA == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout1)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout2)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout3)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout4)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout5)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout6)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout7)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout1)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout2)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout3)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout4)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout5)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout6)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout7)
 
 	except OSError:
 		pass
-	for file in glob.glob('/Users/spenceraxani/Documents/499_Thesis/data/datapack/particle/*_Gp_part_5m.txt'):
+	for file in glob.glob('/Users/spenceraxani/Documents/Nuclear_Decay/Data/particle/*_Gp_part_5m.txt'):
 		list = file
 		fh = open(file)
 		lines = fh.readlines()
@@ -1587,12 +1576,12 @@ pproton2.SetGrid()
 pproton2.Draw()
 pproton2.cd()
 	
-solar_date_p100 , solar_flux_p100 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout7, unpack=True)
-solar_date_p50 	, solar_flux_p50 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout6, unpack=True)
-solar_date_p30 	, solar_flux_p30 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout5, unpack=True)
-solar_date_p10	, solar_flux_p10 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout4, unpack=True)
-solar_date_p5 	, solar_flux_p5 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout3, unpack=True)
-solar_date_p1	, solar_flux_p1 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout2, unpack=True)
+solar_date_p100 , solar_flux_p100 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout7, unpack=True)
+solar_date_p50 	, solar_flux_p50 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout6, unpack=True)
+solar_date_p30 	, solar_flux_p30 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout5, unpack=True)
+solar_date_p10	, solar_flux_p10 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout4, unpack=True)
+solar_date_p5 	, solar_flux_p5 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout3, unpack=True)
+solar_date_p1	, solar_flux_p1 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout2, unpack=True)
 
 x_p100 = array("d",solar_date_p100)
 y_p100 = array("d",solar_flux_p100)
@@ -1674,7 +1663,7 @@ p2proton2.SetGrid()
 p2proton2.Draw()
 p2proton2.cd()
 
-juls, countsnstuff ,zilch,errorforcounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+error_for2, unpack=True)
+juls, countsnstuff ,zilch,errorforcounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+error_for2, unpack=True)
 xya = array("d",juls)
 yya = array("d",countsnstuff)
 errorya = array("d",errorforcounts)
@@ -1683,7 +1672,7 @@ real_gr_fit = TGraphErrors(len(xya), xya, yya , zeroya , errorya)
 real_gr_fit.SetLineColor(40);
 real_gr_fit.SetMarkerColor(40);
 
-juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime,fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/'+real_fileout, unpack=True)
+juliandate , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime,fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/'+real_fileout, unpack=True)
 xreal = array("d",juliandate)
 yreal = array("d",net)
 errorreal = array("d",ernet)
@@ -1764,8 +1753,8 @@ pe2.SetGrid()
 pe2.Draw()
 pe2.cd()
 print("Calculating Solar Electron Data ...")
-solar_date_e0pt8 	, solar_flux_e0pt8 	= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' 	+ fileout, unpack=True)
-solar_date_e2 		, solar_flux_e2 	= numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' 	+ fileout1, unpack=True)
+solar_date_e0pt8 	, solar_flux_e0pt8 	= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' 	+ fileout, unpack=True)
+solar_date_e2 		, solar_flux_e2 	= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' 	+ fileout1, unpack=True)
 x_e0pt8 = array("d",solar_date_e0pt8)
 y_e0pt8 = array("d",solar_flux_e0pt8)
 x_e2 = array("d",solar_date_e2)
@@ -1809,7 +1798,7 @@ pd2.SetGrid()
 pd2.Draw()
 pd2.cd()
 
-date_1 , data_detrended = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/data_detrended.txt', unpack=True)
+date_1 , data_detrended = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True)
 
 plot_detrend = TGraph()
 plot_detrend.SetLineColor(2)
@@ -1865,12 +1854,12 @@ fileout_xray2 	= "XRAY_5m_Short.txt"
 
 if SOLAR_DATA == True:
 	try:
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray1)
-		os.remove('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray2)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray1)
+		os.remove('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray2)
 	except OSError:
 		pass
 		
-	for file in glob.glob('/Users/spenceraxani/Documents/499_Thesis/data/datapack/xray/*_Gp_xr_5m.txt'):
+	for file in glob.glob('/Users/spenceraxani/Documents/Nuclear_Decay/Data/xray/*_Gp_xr_5m.txt'):
 		#print(file)
 		list = file
 		fh = open(file)
@@ -1906,8 +1895,8 @@ if SOLAR_DATA == True:
 				else:
 					continue
 					
-solar_date_xray_l  , solar_flux_xray_l = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray1, unpack=True)
-solar_date_xray_s 	, solar_flux_xray_s = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray2, unpack=True)
+solar_date_xray_l  , solar_flux_xray_l = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray1, unpack=True)
+solar_date_xray_s 	, solar_flux_xray_s = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray2, unpack=True)
 
 x_xray_l = array("d",solar_date_xray_l)
 y_xray_l = array("d",solar_flux_xray_l)
@@ -1999,10 +1988,10 @@ xl = []
 xld = []
 xs = []
 xsd = []
-solar_date_xray_l  , solar_flux_xray_l = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray1, unpack=True)
-solar_date_xray_s 	, solar_flux_xray_s = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/' + fileout_xray2, unpack=True)
+solar_date_xray_l  , solar_flux_xray_l = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray1, unpack=True)
+solar_date_xray_s 	, solar_flux_xray_s = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/' + fileout_xray2, unpack=True)
 
-juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/away_from_mean.txt', unpack=True)
+juliandate , away, errors = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/away_from_mean.txt', unpack=True)
 x5 = array("d",juliandate)
 y5 = array("d",away)
 detrend_gr = TGraph(len(x5), x5, y5)
@@ -2012,6 +2001,7 @@ for i in range(len(solar_flux_xray_l)):
 	xld.append(solar_date_xray_l[i])
 	xs.append(solar_flux_xray_s[i]*10+0.998)
 	xsd.append(solar_date_xray_s[i])
+print(max(xl))
 x_xrayl2 = array("d",xl)
 x_xrays2 = array("d",xs)
 x_xrayld2 = array("d",xld)
@@ -2022,6 +2012,8 @@ xldg1.SetLineColor(2005)
 xsdg1 = TGraph(len(x_xraysd2), x_xraysd2, x_xrays2)
 xsdg1.SetMarkerColor(2004)
 xsdg1.SetLineColor(2004)
+
+
 
 mg_norm1 = TMultiGraph()
 mg_norm1.SetTitle(";Modified Julian Date MST [days]; Count Rate [cps]")
@@ -2034,16 +2026,73 @@ mg_norm1.GetHistogram().SetMaximum(1.0015)
 mg_norm1.GetHistogram().SetMinimum(0.998)
 mg_norm1.GetXaxis().SetLimits(first_day,last_day)
 
-legx1 = TLegend(0.65, 0.65, 0.89, 0.89)
+axis7 = TGaxis(last_day,0.998,last_day,1.0015,0,1.0015*10,510,"+L")
+axis7.SetName("axis7")
+axis7.SetLabelColor(1)
+axis7.SetTitle("X-Ray Flux [Watts/m^{2}]")
+axis7.Draw()
+
+legx1 = TLegend(0.45, 0.73, 0.89, 0.89)
 legx1.SetFillColor(0)
 legx1.AddEntry(detrend_gr, "^{60}Co Count Rate", "lp")
-legx1.AddEntry(xldg1, "Long Wavelength X-Ray: 0.1 - 0.8 nm", "lp")
-legx1.AddEntry(xsdg1, "Short Wavelength X-Ray: 0.05 - 0.4 nm", "lp")
+legx1.AddEntry(xldg1, "Long Wavelength X-Rays: 0.1 - 0.8 nm", "lp")
+legx1.AddEntry(xsdg1, "Short Wavelength X-Rays: 0.05 - 0.4 nm", "lp")
 legx1.Draw()
 
 p71x.Modified()
 p71x.Update()
+
 p70x.cd()
+pl = []
+pld = []
+ps = []
+psd = []
+solar_date_proton_l, solar_flux_proton_l = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/GP_5m_proton_1MeV.txt', unpack=True)
+solar_date_proton_s, solar_flux_proton_s = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/GP_5m_proton_10MeV.txt', unpack=True)
+
+for i in range(len(solar_flux_proton_l)):
+	pl.append(solar_flux_proton_l[i]/3000000+0.998)
+	pld.append(solar_date_proton_l[i])
+	ps.append(solar_flux_proton_s[i]/1000000+0.998)
+	psd.append(solar_date_proton_s[i])
+print(max(pl))
+x_protonl2 = array("d",pl)
+x_protons2 = array("d",ps)
+x_protonld2 = array("d",pld)
+x_protonsd2 = array("d",psd)
+pldg1 = TGraph(len(x_protonld2), x_protonld2, x_protonl2)
+pldg1.SetMarkerColor(2005)
+pldg1.SetLineColor(2005)
+psdg1 = TGraph(len(x_protonsd2), x_protonsd2, x_protons2)
+psdg1.SetMarkerColor(2004)
+psdg1.SetLineColor(2004)
+
+mg_norm2 = TMultiGraph()
+mg_norm2.SetTitle("s;Modified Julian Date MST [days]; Count Rate [cps]")
+mg_norm2.Add(pldg1)
+mg_norm2.Add(psdg1)
+mg_norm2.Add(detrend_gr)
+mg_norm2.Draw("al")
+mg_norm2.GetYaxis().SetTitleOffset(1.5)
+mg_norm2.GetHistogram().SetMaximum(1.0015)      
+mg_norm2.GetHistogram().SetMinimum(0.998)
+mg_norm2.GetXaxis().SetLimits(first_day,last_day)
+
+axis2 = TGaxis(last_day,0.998,last_day,1.0015,0,1.0015/3000000,510,"+L")
+axis2.SetName("axis2")
+axis2.SetLabelColor(1)
+axis2.SetTitle("Proton Flux [Watts/m^{2}]")
+axis2.Draw()
+
+legp2 = TLegend(0.45, 0.73, 0.89, 0.89)
+legp2.SetFillColor(0)
+legp2.AddEntry(detrend_gr, "^{60}Co Count Rate", "lp")
+legp2.AddEntry(pldg1, "Low Energy Protons: 1 MeV", "lp")
+legp2.AddEntry(psdg1, "High Energy Protons: 10 MeV", "lp")
+legp2.Draw()
+
+p70x.Modified()
+p70x.Update()
 
 '''
 BinCanvas = TCanvas('BinCanvas','Peakx',600,1800)

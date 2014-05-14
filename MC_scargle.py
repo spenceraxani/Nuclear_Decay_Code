@@ -30,7 +30,7 @@ pscar1.SetLogy()
 h1 = TH1F('Scargle Amplitude','scargy',80,0,40)
 h1.SetTitle("Scargle Amplitude;Amplitude; Counts")
 h1.Draw()
-spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/MC_data.txt', unpack=True)
+spectrum = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/MC_data.txt', unpack=True)
 for i in range(len(spectrum)):
 	h1.Fill(spectrum[i],1)
 
