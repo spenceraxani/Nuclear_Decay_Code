@@ -2053,7 +2053,7 @@ solar_date_proton_s, solar_flux_proton_s = numpy.loadtxt('/Users/spenceraxani/Do
 for i in range(len(solar_flux_proton_l)):
 	pl.append(solar_flux_proton_l[i]/3000000+0.998)
 	pld.append(solar_date_proton_l[i])
-	ps.append(solar_flux_proton_s[i]/1000000+0.998)
+	ps.append(solar_flux_proton_s[i]/3000000+0.998)
 	psd.append(solar_date_proton_s[i])
 print(max(pl))
 x_protonl2 = array("d",pl)

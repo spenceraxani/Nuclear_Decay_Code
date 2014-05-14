@@ -58,7 +58,7 @@ for file in glob.glob('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/*
 #Now calculate the correlation or whatever from the elements in the dictionary.
 print("Calculating Pearsons Correlations ...")
 new_dict = {}
-number_of_variables = 15 #basically number of files in the folder
+number_of_variables = 16 #basically number of files in the folder
 for element in dictionary: #This loop gets rid of missing data from any of the data sets, and only uses the dates at which there is data for every variable.
 	#print(len(dictionary[element]))
 	if len(dictionary[element]) == number_of_variables:
@@ -82,7 +82,7 @@ for j in range(number_of_variables): #Now loop through all entries to calculate 
 trials = 50000 #number of bootstraping data sets to generate.
 #pick the file to bootstrap.
 file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_counts.txt' #comparing file
-file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_xray_short.txt' #this one, bootstrap
+file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_proton_10MeV.txt' #this one, bootstrap
 date1, value1 = numpy.loadtxt(file1, unpack=True)
 date2, value2 = numpy.loadtxt(file2, unpack=True)
 

@@ -18,7 +18,7 @@ from random import gauss
 from scipy.fftpack import fft, rfft, fftfreq
 import pylab as plt
 import time
-BINXRAY = 0
+BINXRAY = 1
 ###############################
 #Used to bin data sets so that all the time series line up.
 #When calculating the correlation coefficients, the data needs all the time series to be lined up
@@ -39,20 +39,20 @@ p71x.SetGrid()
 p71x.Draw()
 p71x.cd()
 
-xray_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/binned/binned_humidity.txt" #These are the output file names and locations
-counts_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/binned/binned_pressure.txt"
-n_points = 2000
+xray_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_proton_10MeV.txt" #These are the output file names and locations
+counts_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_proton_5MeV.txt"
+n_points = 2000 #all the others were binned into 2000 bins
 
 if BINXRAY == True:
 	try:
 		os.remove(xray_bin)
-		#os.remove(counts_bin)
+		os.remove(counts_bin)
 	except OSError:
 		pass
 	#count_date , zeroes , er117, c133, er133, net, ernet, exp, realcount, livetime,counts, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/real_data.txt', unpack=True)
-	xray_date  , xray_long = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/temperture_file.txt', unpack=True) #these are the input files
+	xray_date  , xray_long = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/GP_5m_proton_10MeV.txt', unpack=True) #these are the input files
 	#xray_date , xray_long , peak2 = numpy.loadtxt('/Users/spenceraxani/Documents/499_Thesis/data/datapack/peak_data.txt', unpack=True)
-	count_date  , counts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/pressure_data.txt', unpack=True)
+	count_date  , counts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/GP_5m_proton_5MeV.txt', unpack=True)
 	increment = (last_day - first_day)/n_points
 	x_ray_sums = 0
 	counts_sums = 0
