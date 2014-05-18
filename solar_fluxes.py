@@ -86,6 +86,8 @@ mg_norm1.Add(xsdg1)
 mg_norm1.Add(detrend_gr)
 mg_norm1.Draw("al")
 mg_norm1.GetYaxis().SetTitleOffset(1.5)
+a = mg_norm1.GetYaxis().GetLabelFont()
+print(a)
 mg_norm1.GetHistogram().SetMaximum(1.0015)      
 mg_norm1.GetHistogram().SetMinimum(0.998)
 mg_norm1.GetXaxis().SetLimits(first_day,last_day)
@@ -93,8 +95,10 @@ mg_norm1.GetXaxis().SetLimits(first_day,last_day)
 axis1 = TGaxis(last_day,0.998,last_day,1.0015,0,0.0000499206,510,"+L")
 axis1.SetName("axis1")
 axis1.SetLabelColor(1)
-axis1.SetTitle("X-Ray Flux [Watts/m^{2}]")
+axis1.SetTitle("X-Ray Flux [W/m^{2}]")
 axis1.SetTitleOffset(1.2)
+axis1.SetLabelFont(42)
+axis1.SetTitleFont(42)
 axis1.Draw()
 
 
@@ -102,16 +106,14 @@ axis1.Draw()
 leg1 = TLegend(0.4, 0.73, 0.89, 0.89)
 leg1.SetFillColor(0)
 leg1.AddEntry(detrend_gr, "^{60}Co Count Rate", "lp")
-leg1.AddEntry(xldg1, "Long Wavelength X-Rays: 0.1 - 0.8 nm", "lp")
-leg1.AddEntry(xsdg1, "Short Wavelength X-Rays: 0.05 - 0.4 nm", "lp")
+leg1.AddEntry(xldg1, "Long Wavelength X-Rays: 0.1 -- 0.8 nm", "lp")
+leg1.AddEntry(xsdg1, "Short Wavelength X-Rays: 0.05 -- 0.4 nm", "lp")
 leg1.Draw()
 
 p2.Modified()
 p2.Update()
 
 '''
-
-
 #Graph 2
 p1.cd()
 pl = []
@@ -157,6 +159,8 @@ axis2.SetName("axis2")
 axis2.SetLabelColor(1)
 axis2.SetTitle("Proton Flux [p^{+}/m^{2}-s-sr]")
 axis2.SetTitleOffset(1.2)
+axis2.SetLabelFont(42)
+axis2.SetTitleFont(42)
 axis2.Draw()
 
 leg2 = TLegend(0.45, 0.73, 0.89, 0.89)
@@ -226,8 +230,11 @@ axis3 = TGaxis(last_day,0.998,last_day,1.0015,0,174300*10000,510,"+L")
 axis3.SetName("axis3")
 axis3.SetLabelColor(1)
 axis3.SetTitle("Electron Flux [e^{-}/m^{2}-s-sr ]")
-axis3.Draw()
+axis3.SetLabelFont(42)
+axis3.SetTitleFont(42)
 axis3.SetTitleOffset(1.2)
+axis3.Draw()
+
 
 leg3 = TLegend(0.45, 0.73, 0.89, 0.89)
 leg3.SetFillColor(0)

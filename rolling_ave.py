@@ -79,7 +79,7 @@ plot_awaymin.SetLineWidth(-802);
 plot_awaymax = TGraphErrors(len(j), j, r , q , w)
 plot_awaymax.SetLineColor(30);
 mg_away = TMultiGraph()
-mg_away.SetTitle("Normalized Counts;Modified Julian Date MST [days]; Normalized Counts")
+mg_away.SetTitle("Normalized Count Rate;Modified Julian Date MST [days]; Normalized Count Rate")
 #mg_away.SetTitle("Probability;Residual [cps]; Probability")
 
 mg_away.Add(plot_awaymax,"p")
@@ -90,26 +90,9 @@ mg_away.Draw("a")
 mg_away.GetYaxis().SetTitleOffset(1.5);
 mg_away.GetXaxis().SetLimits(first_day,last_day);
 
-
-
-axis7 = TGaxis(last_day,0,last_day,1,0,2000,50510,"+L")
-axis7.SetName("axis7")
-#axis7.SetLabelOffset(0.01)
-axis7.Draw()
-
 p2ave.Modified()
 p2ave.Update()
 
-c1 = TCanvas("c1","Examples of Gaxis",10,10,700,500);
-
-c1.Range(-10,-1,10,1)
-axis1 = TGaxis(-4.5,-0.2,5.5,-0.2,-6,8,510,"")
-axis1.SetName("axis1")
-axis1.Draw()
-
-axis2 = TGaxis(-4.5,0.2,5.5,0.2,0.001,10000,510,"G")
-axis2.SetName("axis2")
-axis2.Draw()
 
 
 

@@ -74,18 +74,18 @@ for j in range(number_of_variables): #Now loop through all entries to calculate 
 		#print(list1)
 		x = array("d",list1)
 		y = array("d",list2)	
-		print(correlation(x,y))
-		print(pearsonr(x, y))#Check with scipy version of pearsons correlation.
+		#print(correlation(x,y))
+		#print(pearsonr(x, y))#Check with scipy version of pearsons correlation.
 		#print(probabilityOfResult(x,y)[0])
 
 #now bootstrap that mother!
-trials = 50000 #number of bootstraping data sets to generate.
+trials = 50 #number of bootstraping data sets to generate. 50000 generatlly
 #pick the file to bootstrap.
-file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_counts.txt' #comparing file
-file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_proton_10MeV.txt' #this one, bootstrap
+
+file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_data_detrended_residual.txt' #comparing file
+file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_proton_100MeV.txt' #this one, bootstrap
 date1, value1 = numpy.loadtxt(file1, unpack=True)
 date2, value2 = numpy.loadtxt(file2, unpack=True)
-
 
 p_corr_list = []
 new_temp_dict = {}
@@ -133,8 +133,15 @@ for i in temp_another_dict:
 x = array("d",list1)
 y = array("d",list2)
 corr = correlation(x,y)
+
 print(corr)
 print(pearsonr(x, y))
+zr = 0.5*np.log((1+0.176401467636)/(1-0.176401467636))
+za = 1.96
+cl = zr -za*(np.sqrt(1/(len(x)-3)))
+rl = (np.exp(2*cl)-1)/(np.exp(2*cl)+1)
+print(rl)
+print(corr*np.sqrt(len(x)-2)/np.sqrt(1-corr**2))
 
 c = TCanvas('canvas','can1',600,1800)
 c.Draw()

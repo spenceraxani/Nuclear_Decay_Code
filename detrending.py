@@ -70,7 +70,7 @@ det_counts = []
 print(counts)
 dis_to_pressure = 3.687
 dis_to_temperature = 22.2*0.142000
-eff_to_dis = 0.00006#508857
+eff_to_dis = 0.000051#508857
 for i in range(len(date)):
 	det_counts.append(counts[i]*(1.0  - (pressure[i]-mean_pressure)*dis_to_pressure*eff_to_dis + (temperature[i]-mean_temperature)*dis_to_temperature*eff_to_dis))
 	outfile.write(str(date[i]) + " \t" +str(counts[i]*(1.0  - (pressure[i]-mean_pressure)*dis_to_pressure*eff_to_dis + (temperature[i]-mean_temperature)*dis_to_temperature*eff_to_dis))+"\n" )
