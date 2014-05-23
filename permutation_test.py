@@ -42,8 +42,8 @@ def correlation(x,y):
 trials = 50000 #number of bootstraping data sets to generate. 50000 generatlly
 #pick the file to bootstrap.
 
-file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_residual.txt' #comparing file
-file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_pressure.txt' #this one, bootstrap
+file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_pressure.txt' #comparing file
+file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_temperature.txt' #this one, bootstrap
 date1, value1 = numpy.loadtxt(file1, unpack=True)
 date2, value2 = numpy.loadtxt(file2, unpack=True)
 

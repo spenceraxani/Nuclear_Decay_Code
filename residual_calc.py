@@ -24,17 +24,23 @@ def exp_counts(t):
 	return(counts_exp)
 
 binned_residual_dtemp = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_detrended_residual.txt"
+binned_residual_norm = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_detrended_normalization.txt"
 residual_fileout = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/residual_dtemp.txt"
 residual_org = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/residual.txt"
 try:
 	os.remove(residual_fileout)
 	os.remove(binned_residual_dtemp)
+	os.remove(binned_residual_norm)
 except OSError:
 	pass
 
 juliandate , net = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_data_detrended.txt', unpack=True)
 x = array("d",juliandate)
 y = array("d",net)
+
+date_1 , net_1 = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_data_detrended.txt', unpack=True)
+x = array("d",date_1)
+y = array("d",net_1)
 
 date = juliandate.tolist()
 counts = net.tolist()

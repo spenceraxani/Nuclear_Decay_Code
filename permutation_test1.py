@@ -42,8 +42,8 @@ def correlation(x,y):
 trials = 50000 #number of bootstraping data sets to generate. 50000 generatlly
 #pick the file to bootstrap.
 
-file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_residual.txt' #comparing file
-file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_xray_long.txt' #this one, bootstrap
+file1 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_pressure.txt' #comparing file
+file2 = '/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_humidity.txt' #this one, bootstrap
 date1, value1 = numpy.loadtxt(file1, unpack=True)
 date2, value2 = numpy.loadtxt(file2, unpack=True)
 
@@ -54,7 +54,7 @@ another_dict = {}
 temp_another_dict = {}
 print("Calculating the permutation distribution...")
 for i in range(trials):
-	#print(i)
+	print(i)
 	for i in range(len(date1)):
 		new_temp_dict[date1[i]] = [value1[i]] #here, column[0] is the date. So element [date] in dictionary is [value(column[1])]
 	for j in range(len(date2)):

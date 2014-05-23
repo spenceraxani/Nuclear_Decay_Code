@@ -24,8 +24,6 @@ getcontext().prec = 12
 # This is just a mess of code to generate a tonne of graphs.  It also takes all the solar data and count rate data to make it usefull.  You'll spend most of your time in this file. 
 ###########################################################
 
-
-
 SOLAR_DATA = 0
 TEMP_DATA = 0
 SYNC = 1
@@ -1798,7 +1796,7 @@ pd2.SetGrid()
 pd2.Draw()
 pd2.cd()
 
-date_1 , data_detrended = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True)
+date_1 , data_detrended, errs= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True)
 
 plot_detrend = TGraph()
 plot_detrend.SetLineColor(2)

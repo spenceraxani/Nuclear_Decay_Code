@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      5474,        151]
-NotebookOptionsPosition[      4588,        117]
-NotebookOutlinePosition[      4944,        133]
-CellTagsIndexPosition[      4901,        130]
+NotebookDataLength[      5605,        153]
+NotebookOptionsPosition[      4719,        119]
+NotebookOutlinePosition[      5075,        135]
+CellTagsIndexPosition[      5032,        132]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,13 +22,13 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"b", " ", "=", " ", 
-  RowBox[{"1.00042", "-", ".998"}]}], "\[IndentingNewLine]", 
+  RowBox[{"0.998", "-", ".994"}]}], "\[IndentingNewLine]", 
  RowBox[{"c", " ", "=", " ", 
-  RowBox[{"1.0015", " ", "-", " ", "0.998"}]}], "\[IndentingNewLine]", 
+  RowBox[{"1.003", "-", " ", "0.994"}]}], "\[IndentingNewLine]", 
  RowBox[{"a", "=", 
-  RowBox[{"3.45165217391", " ", 
+  RowBox[{"2.003", " ", 
    SuperscriptBox["10", 
-    RowBox[{"-", "5"}]]}]}], "\[IndentingNewLine]", 
+    RowBox[{"-", "4"}]]}]}], "\[IndentingNewLine]", 
  RowBox[{"c", "*", 
   RowBox[{"a", "/", "b", "  "}]}]}], "Input",
  CellChangeTimes->{{3.609061532336532*^9, 3.609061550893066*^9}, 
@@ -36,7 +36,9 @@ Cell[BoxData[{
    3.609061865470498*^9, 3.609061865975039*^9}, {3.609061961180006*^9, 
    3.609061961505969*^9}, {3.60906206873848*^9, 3.609062119878462*^9}, {
    3.6090621809811983`*^9, 3.609062213012587*^9}, {3.6090623324757643`*^9, 
-   3.609062339880397*^9}, {3.609062448765019*^9, 3.609062471404161*^9}}],
+   3.609062339880397*^9}, {3.609062448765019*^9, 3.609062471404161*^9}, {
+   3.609598997127749*^9, 3.609599002626396*^9}, {3.6095990999783382`*^9, 
+   3.609599108751742*^9}, {3.60959918996726*^9, 3.609599195717113*^9}}],
 
 Cell[BoxData["0.0024200000000000887`"], "Output",
  CellChangeTimes->{{3.609061551575117*^9, 3.609061586257967*^9}, 
@@ -116,7 +118,7 @@ Cell[BoxData["24490.129259702866`"], "Output",
 }, Open  ]]
 },
 WindowSize->{740, 699},
-WindowMargins->{{Automatic, 90}, {Automatic, 0}},
+WindowMargins->{{Automatic, -3}, {Automatic, 0}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",
 StyleDefinitions->"Default.nb"
@@ -133,29 +135,28 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 840, 16, 82, "Input"],
-Cell[1422, 40, 309, 4, 28, "Output"],
-Cell[1734, 46, 309, 4, 28, "Output"],
-Cell[2046, 52, 308, 4, 28, "Output"],
-Cell[2357, 58, 312, 4, 28, "Output"]
+Cell[579, 22, 971, 18, 82, "Input"],
+Cell[1553, 42, 309, 4, 28, "Output"],
+Cell[1865, 48, 309, 4, 28, "Output"],
+Cell[2177, 54, 308, 4, 28, "Output"],
+Cell[2488, 60, 312, 4, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2706, 67, 464, 9, 80, "Input"],
-Cell[3173, 78, 115, 1, 28, "Output"],
-Cell[3291, 81, 115, 1, 28, "Output"],
-Cell[3409, 84, 106, 1, 28, "Output"],
-Cell[3518, 87, 112, 1, 28, "Output"]
+Cell[2837, 69, 464, 9, 80, "Input"],
+Cell[3304, 80, 115, 1, 28, "Output"],
+Cell[3422, 83, 115, 1, 28, "Output"],
+Cell[3540, 86, 106, 1, 28, "Output"],
+Cell[3649, 89, 112, 1, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3667, 93, 451, 9, 80, "Input"],
-Cell[4121, 104, 113, 1, 28, "Output"],
-Cell[4237, 107, 112, 1, 28, "Output"],
-Cell[4352, 110, 107, 1, 28, "Output"],
-Cell[4462, 113, 110, 1, 62, "Output"]
+Cell[3798, 95, 451, 9, 80, "Input"],
+Cell[4252, 106, 113, 1, 28, "Output"],
+Cell[4368, 109, 112, 1, 28, "Output"],
+Cell[4483, 112, 107, 1, 28, "Output"],
+Cell[4593, 115, 110, 1, 28, "Output"]
 }, Open  ]]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

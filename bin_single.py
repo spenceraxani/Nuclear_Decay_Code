@@ -39,7 +39,7 @@ p71x.SetGrid()
 p71x.Draw()
 p71x.cd()
 
-xray_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_single.txt" #These are the output file names and locations
+xray_bin = "/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned/binned_total_counts_and_errors.txt" #These are the output file names and locations
 n_points = 2000 #all the others were binned into 2000 bins
 
 if BINXRAY == True:
@@ -47,28 +47,32 @@ if BINXRAY == True:
 		os.remove(xray_bin)
 	except OSError:
 		pass
-	#xray_date , zeroes , er117, c133, er133, net, ernet, xray_long, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/real_data.txt', unpack=True)
-
-	xray_date  , xray_long = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/residual.txt', unpack=True) #these are the input files
+	xray_date , zeroes , er117, c133, er133, net, ernet, xray_long, realcount, livetime, fwhm, excesscounts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/real_data.txt', unpack=True)
+	#xray_date  , xray_long = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/residual.txt', unpack=True) #these are the input files
 	increment = (last_day - first_day)/n_points
+	total_counts = []
 	date = xray_date.tolist()
-	value = xray_long.tolist()
+	value = net.tolist()
 	xray_bin_out= open(xray_bin,'a')
 	x_ray_counts = []
 	x_ray_sums = 0.0
-
+	errs = 0
 	for i in range(n_points):
 		print(i)
 		for j in range(len(date)):
 			if date[j] >= (increment * i + first_day) and date[j] <= (increment * (i + 1.0) +first_day):
-				x_ray_counts.append(0.00001)
-				#x_ray_counts.append(value[j]*1.0)
+				x_ray_counts.append(value[j]*1.0)
+				total_counts.append(realcount[j])
 				#print(value[j]*1.0)
+		#print(sum(total_counts))
+		for k in range(len(total_counts)):
+			errs += (np.sqrt(total_counts[k])/800.0) * (np.sqrt(total_counts[k])/800.0)
 		if x_ray_counts:
 			x_ray_sums = np.average(x_ray_counts)
-			xray_bin_out.write(str(((increment * i + first_day)+(increment * (i + 1) +first_day))/2.0)+ '\t' +str(x_ray_sums*1.0)+"\n" )
+			xray_bin_out.write(str(((increment * i + first_day)+(increment * (i + 1) +first_day))/2.0)+ '\t' + str(x_ray_sums*1.0)+'\t' +str(np.sqrt(errs)/len(total_counts))+"\n" )
 		else:
-			xray_bin_out.write(str(((increment * i + first_day)+(increment * (i + 1) +first_day))/2.0)+ '\t' +str(0.0)+"\n" )#WATCH THIS ONE! If no data, what do you want to put in the bin??
-
+			xray_bin_out.write(str(((increment * i + first_day)+(increment * (i + 1) +first_day))/2.0)+ '\t' + str(0.0)+  '\t' + str(0.0)+"\n" )#WATCH THIS ONE! If no data, what do you want to put in the bin??
 		x_ray_sums = 0.0
+		total_counts = []
+		errs = 0.0
 		x_ray_counts = []

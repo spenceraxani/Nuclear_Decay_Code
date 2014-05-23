@@ -50,7 +50,7 @@ dis_gr.SetMarkerStyle(21)
 c1p1.Modified()
 c1p1.Update()
 '''
-date , counts = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_total_counts.txt', unpack=True)
+date , counts, err = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_total_counts_and_errors.txt', unpack=True)
 date , pressure = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_pressure.txt', unpack=True)
 date , temperature = numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/binned_temperature.txt', unpack=True)
 mean_pressure = np.mean(pressure)
@@ -73,7 +73,7 @@ dis_to_temperature = 22.2*0.142000
 eff_to_dis = 0.000051#508857
 for i in range(len(date)):
 	det_counts.append(counts[i]*(1.0  - (pressure[i]-mean_pressure)*dis_to_pressure*eff_to_dis + (temperature[i]-mean_temperature)*dis_to_temperature*eff_to_dis))
-	outfile.write(str(date[i]) + " \t" +str(counts[i]*(1.0  - (pressure[i]-mean_pressure)*dis_to_pressure*eff_to_dis + (temperature[i]-mean_temperature)*dis_to_temperature*eff_to_dis))+"\n" )
+	outfile.write(str(date[i]) + " \t" +str(counts[i]*(1.0  - (pressure[i]-mean_pressure)*dis_to_pressure*eff_to_dis + (temperature[i]-mean_temperature)*dis_to_temperature*eff_to_dis))+ "\t"+str(err[i])+"\n" )
 new_date = []
 print(len(det_counts))
 for j in range(len(date)):

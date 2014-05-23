@@ -31,7 +31,7 @@ def exp_counts(t): #this just calculates the expected count rate given the value
 
 print(exp_counts(56547.9071712))
 
-time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/data_detrended.txt', unpack=True) #Calc Lomb Scargle from this file, and give confidence intervals
+time , counts= numpy.loadtxt('/Users/spenceraxani/Documents/Nuclear_Decay/Data/nitrogen_data.txt', unpack=True) #Calc Lomb Scargle from this file, and give confidence intervals
 time_series = array("d",time)
 mean = np.mean(counts)
 time_list = []
