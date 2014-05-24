@@ -6,6 +6,14 @@
 
 using namespace std;
 
+// print elements of a vector
+void print_vector(vector<double> vec)
+{
+	for (int i = 0; i < vec.size(); i++)
+		cout << vec[i] << " ";
+	cout << endl;
+}
+
 // calculate averages
 vector<double> bin_averages(vector<double> xvec, vector<double> yvec, double binwidth)
 {
@@ -28,15 +36,14 @@ vector<double> bin_averages(vector<double> xvec, vector<double> yvec, double bin
 	// fill new vectors
 	for (int i = 0; i < length; i++)
 	{
-		outvec[xvec[i]/binwidth] += yvec[i];
-		ptsperbin[xvec[i]/binwidth]++;
+		outvec[(xvec[i]-min)/binwidth] += yvec[i];
+		ptsperbin[(xvec[i]-min)/binwidth]++;
 	}
 
 	// average over points per bin
 	for (int i = 0; i < outvec.size(); i++)
-		outvec[i] /= ptsperbin[i];
+		outvec[i] /= (1.0*ptsperbin[i]);
 	
-
 	return outvec;
 }
 
