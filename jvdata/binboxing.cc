@@ -20,6 +20,7 @@ int main()
 		cps_vector.push_back(cps);
 	}
 
+	// keep track of most unlikely events
 	double most_unlikely_probability = 1.0; // initialize to most likely and whittle it down
 	double corresponding_binwidth = 0.0;
 	int corresponding_flare = 0;
@@ -34,9 +35,10 @@ int main()
 		// find bin averages for various bin widths from 2 hours to 2 days
 		for (double binwidth = 2.0/24.0; binwidth <= 48.0/24.0; binwidth += 2.0/24.0)
 		{
-			cout << "solar flare " << flare_index+1 << ", " << "binwidth = " << binwidth << " days" << endl;
+			cout << "solar flare " << flare_index+1 << ", "
+					 << "binwidth = " << binwidth << " days" << endl;
 
-			// do the calculations; FIXME do something with the results
+			// do the calculations
 			vector<double> cps_averaged = bin_averages(cps_t_vector, cps_vector, binwidth);
 
 			const double threshold =
@@ -54,7 +56,7 @@ int main()
 			cout << " probability = " << probability << endl;
 
 			// check if we get a new most unlikely probability and modify accordingly
-			if (probability < most_unlikely_probability /*and probability > 0.00001*/)
+			if (probability < most_unlikely_probability)
 			{
 				most_unlikely_probability = probability;
 				corresponding_binwidth = binwidth;
@@ -86,6 +88,19 @@ int main()
 		cout << "  Binwidths "; print_vector(zero_prob_binwidths);
 		cout << "  Probabilities "; print_vector(zero_prob_probabilities);
 	}
+
+	// let's also save one run to file and plot with gnuplot later
+	ofstream outfile1("rare_event1.txt");
+	const double rare_binwidth = 0.75;
+	const int rare_flare = 2;
+	vector<double> cps_averaged_rare = bin_averages(cps_t_vector, cps_vector, rare_binwidth);
+	for (int i = 0; i < cps_averaged_rare.size(); i++)
+		outfile1 << cps_averaged_rare[i] << endl;
+	cout << endl << "Saving one run to rare_event1.txt." << endl;
+	cout << " Use threshold of "
+			 << average_before_time(cps_t_vector, cps_vector,
+			 												rare_binwidth, the_big_five_dates[rare_flare])
+			 << endl;
 
 
 	return 0;
